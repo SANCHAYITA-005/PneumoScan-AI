@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PneumoScan | Analysis Result</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
+    <script src="{{ url_for('static', filename='result.js') }}" defer></script>
+</head>
+
+<body>
+
+<header class="navbar">
+    <a href="/" class="logo">Pneumo<span>Scan</span></a>
+    <span class="badge">✦ AI X-RAY ANALYSIS</span>
+</header>
+
+<main class="container">
+
+    <!-- PROCESSING SCREEN -->
+    <section id="processing" class="processing card">
+        <div class="scanner">
+            <div class="scan-line"></div>
+            <span>✚</span>
+        </div>
+
+        <h1>Analyzing X-Ray</h1>
+        <p id="processText">Preparing your chest X-ray...</p>
+
+        <div class="progress-track">
+            <div id="progressBar"></div>
+        </div>
+
+        <div class="steps">
+            <span>01 Upload</span>
+            <span>02 AI Analysis</span>
+            <span>03 Results</span>
+        </div>
+    </section>
+
+    <!-- ERROR SCREEN -->
+    <section id="errorScreen" class="card error-screen" hidden>
+        <h2>Unable to display result</h2>
+        <p id="errorMessage">Prediction data could not be loaded.</p>
+        <a href="/" class="back-button">← Go Back</a>
+    </section>
+
+    <!-- RESULT SCREEN -->
+    <section id="result" hidden>
+
+        <div class="heading">
+            <p class="eyebrow">✦ ANALYSIS COMPLETE</p>
+            <h1>Your X-Ray Report</h1>
+            <p>AI-assisted chest X-ray classification</p>
+        </div>
+
+        <div class="result-grid">
+
+            <div class="card image-card">
+                <h3>Uploaded X-Ray</h3>
+                <img id="patientImage" alt="Uploaded chest X-ray">
+            </div>
+
+            <div class="card prediction-card">
+                <p class="eyebrow">AI PREDICTION</p>
+
+                <div id="statusIcon" class="status-icon">✦</div>
+
+                <h2 id="prediction">--</h2>
+                <p id="description"></p>
+
+                <div class="confidence">
+                    <div class="confidence-label">
+                        <span>Model confidence</span>
+                        <strong id="confidenceValue">--</strong>
+                    </div>
+
+                    <div class="progress-track">
+                        <div id="confidenceBar"></div>
+                    </div>
+                </div>
+
+                <p class="disclaimer">
+                    Experimental AI result. Not a medical diagnosis.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- EDUCATIONAL COMPARISON -->
+        <section class="comparison">
+
+            <div class="heading">
+                <p class="eyebrow">VISUAL EDUCATION</p>
+                <h2>Understanding the X-Ray</h2>
+                <p>General educational comparison of chest X-ray appearances.</p>
+            </div>
+
+            <div class="compare-grid">
+
+                <article class="card compare-card">
+                    <div class="compare-icon normal-icon">N</div>
+                    <h3>Normal Appearance</h3>
+                    <ul>
+                        <li>Generally clearer lung fields.</li>
+                        <li>No obvious focal air-space opacity.</li>
+                        <li>Relatively uniform appearance.</li>
+                    </ul>
+                </article>
+
+                <article class="card compare-card">
+                    <div class="compare-icon pneumonia-icon">P</div>
+                    <h3>Pneumonia-associated Appearance</h3>
+                    <ul>
+                        <li>Possible patchy white opacities.</li>
+                        <li>Areas of increased lung density.</li>
+                        <li>Possible infiltrates or consolidation.</li>
+                    </ul>
+                </article>
+
+            </div>
+        </section>
+
+        <div class="notice">
+            <strong>Important:</strong>
+            This educational AI model does not replace a radiologist.
+            Its prediction should not be used to diagnose or treat a patient.
+        </div>
+
+        <a href="/" class="back-button">
+            ← Analyze Another X-Ray
+        </a>
+
+    </section>
+
+</main>
+
+<footer>
+    PneumoScan © 2026 | Educational & Research Purpose Only
+</footer>
+
+</body>
+</html>
